@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>Decode the Drawings Competition</title>
+        <link rel="stylesheet" href="./css/styles.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/14.5.3/math.min.js"
+            integrity="sha512-LAPS81sOkN5iK8swYPeDIL5HyT+GqZHWluXK39fsegObid9BSIiL6b1xkgyCB44hdCNraB2WzBMeTMcksXy23A=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/numeric/1.2.6/numeric.min.js"></script>
+        <script src="js/main.js" type="module"></script>
+    </head>
+
+    <body>
+
+        <!-- version selector -->
+        <div>
+            <label for="version">Decoder Version</label>
+            <select name="version" id="version">
+                <option value="1">V1</option>
+                <option value="2">V2</option>
+                <option value="3">V3</option>
+                <option value="4" selected>V4</option>
+            </select>
+        </div>
+
+        <!-- input selectors -->
+        <div class="flexrow">
+            <label for="videos">Video Input</label>
+            <select name="videos" id="videos">
+                <option value="0" disabled selected>Choose a Video</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+            </select>
+
+            <label for="datafiles">Data File Input</label>
+            <select name="datafiles" id="datafiles">
+                <option value="0" disabled selected>Choose a Data File</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+            </select>
+        </div>
+
+        <!-- decoding settings -->
+        <div class="flexrow">
+            <label for="k1coeff">K1</label>
+            <input id="k1coeff" type="number" value="6.67e-7" step="2.9e-8" />
+
+            <label for="smoothing">Smoothing</label>
+            <input id="smoothing" type="number" value="0.95" step="0.01" min="0" max="0.98" />
+
+            <label for="zthresh">Z Threshold</label>
+            <input id="zthresh" type="number" value="10" step="0.1" />
+        </div>
+
+        <!-- decoder output -->
+        <div class="flexrow">
+            <canvas id="drawingCanvas" width="700" height="700" style="border: 1px solid"></canvas>
+            <div style="display: none;">
+                <div>
+                    <textarea id="ballCoords" cols="35" rows="45"></textarea><br />
+                    <button id="downloadBallCoordsJS" disabled>Download Ball Coords Data File</button>
+                </div>
+                <div>
+                    <textarea id="xyCoords" cols="35" rows="45"></textarea><br />
+                    <button id="downloadXYCoordsBtn" disabled>Download XY Coords TXT</button>
+                </div>
+            </div>
+
+            <!-- input video preview -->
+            <canvas id="inputCanvas" style="translate: -200px; z-index: -1;"></canvas>
+        </div>
+
+    </body>
+
+</html>

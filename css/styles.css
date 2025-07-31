@@ -1,0 +1,8 @@
+div {
+    margin: 5px;
+}
+
+.flexrow {
+    display: flex;
+    column-gap: 10px;
+}
